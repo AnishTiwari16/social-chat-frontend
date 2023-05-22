@@ -26,7 +26,7 @@ const GettingStarted = ({ navigation }) => {
                     </View>
                     <View style={tw('border-b-2 border-y-slate-200')}>
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('LogIn')}
+                            onPress={() => navigation.navigate('SignUpEmail')}
                         >
                             <Text style={tw('text-lg py-3 text-gray-500')}>
                                 Open a new account
