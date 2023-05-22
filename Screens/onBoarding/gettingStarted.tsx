@@ -11,7 +11,7 @@ const GettingStarted = ({ navigation }) => {
                     Welcome to
                 </Text>
                 <Text style={tw(' font-semibold text-4xl text-gray-700')}>
-                    kite by Anish
+                    <Text style={tw('text-blue-500')}>kite</Text> by Social Chat
                 </Text>
 
                 <View style={tw('py-10')}>
@@ -25,9 +25,13 @@ const GettingStarted = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={tw('border-b-2 border-y-slate-200')}>
-                        <Text style={tw('text-lg py-3 text-gray-500')}>
-                            Open a new account
-                        </Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('LogIn')}
+                        >
+                            <Text style={tw('text-lg py-3 text-gray-500')}>
+                                Open a new account
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <Disclaimer />

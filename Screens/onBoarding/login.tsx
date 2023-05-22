@@ -5,6 +5,7 @@ import {
     Platform,
     Text,
     TextInput,
+    TouchableOpacity,
     TouchableWithoutFeedback,
     View,
 } from 'react-native';
@@ -35,7 +36,6 @@ const Login = () => {
                             placeholder="User ID"
                             onChangeText={(e) => setUserId(e)}
                             value={userID}
-                            autoCapitalize={'characters'}
                         />
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput
@@ -69,13 +69,26 @@ const Login = () => {
                                 />
                             )}
                         </View>
-                        <View style={tw('bg-blue-500 p-1 rounded')}>
+                        <TouchableOpacity style={tw('items-end')}>
+                            <Text style={tw('text-blue-500')}>
+                                Forget user ID or password?
+                            </Text>
+                        </TouchableOpacity>
+                        <View style={tw('bg-blue-500 p-1 rounded my-7')}>
                             <Button
                                 title="LOGIN"
                                 color="white"
                                 // onPress={() => Alert.alert('Simple Button pressed')}
                             />
                         </View>
+                        <View
+                            style={tw('border-t-2 border-y-slate-300 mb-7')}
+                        ></View>
+                        <TouchableOpacity>
+                            <Text style={tw('text-center text-blue-500')}>
+                                Don't have an account? Signup
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                     <Disclaimer />
                 </View>
