@@ -87,7 +87,9 @@ const Login = ({ navigation }) => {
                                 <Button
                                     title="Login"
                                     color="white"
-                                    // onPress={() => Alert.alert('Simple Button pressed')}
+                                    onPress={() =>
+                                        navigation.navigate('MainScreen')
+                                    }
                                 />
                             </View>
                             <View

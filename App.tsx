@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import { TailwindProvider } from 'tailwind-rn';
 import utilities from './tailwind.json';
 import GettingStarted from './Screens/onBoarding/gettingStarted';
@@ -14,7 +13,10 @@ import VerifyEmail from './Screens/onBoarding/logIn/ForgetPassword/verifyEmail';
 import VerifyVerificationSetup from './Screens/onBoarding/logIn/ForgetPassword/verifyVerificationSetup';
 import VerifyChoosePassword from './Screens/onBoarding/logIn/ForgetPassword/verifyChoosePassword';
 import VerifyAccountRecovered from './Screens/onBoarding/logIn/ForgetPassword/verifyAccountRecovered';
+import MainScreen from './Screens/HomeScreen';
+
 const Stack = createNativeStackNavigator();
+
 export default function App() {
     return (
         //@ts-ignore - TailwindProvider is missing a type definition
@@ -57,17 +59,9 @@ export default function App() {
                         name="VerifyAccountRecovered"
                         component={VerifyAccountRecovered}
                     />
+                    <Stack.Screen name="MainScreen" component={MainScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         </TailwindProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
