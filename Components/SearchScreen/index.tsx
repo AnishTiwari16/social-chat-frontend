@@ -28,16 +28,20 @@ const SearchScreen = () => {
             >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={tw('p-2.5')}>
-                        <View>
-                            <SeachIcon name="search1" size={25} />
-                            <TextInput
-                                style={styles.input}
-                                onChangeText={setSearch}
-                                value={search}
-                                placeholder="Search"
-                                keyboardType="default"
-                            />
-                        </View>
+                        <SeachIcon
+                            name="search1"
+                            size={20}
+                            style={tw('absolute top-[40%] left-[8%]')}
+                            color={'#979797'}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setSearch}
+                            value={search}
+                            placeholder="Search"
+                            keyboardType="default"
+                        />
+
                         {search.length > 0 ? (
                             <ScrollView>
                                 {SearchUserData.filter((elem) => {
@@ -85,6 +89,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#6262821F',
         borderRadius: 10,
+        paddingLeft: 35,
     },
     searchContainer: {
         flexDirection: 'row',
