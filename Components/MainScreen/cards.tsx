@@ -16,13 +16,13 @@ const Cards = () => {
                     <View style={styles.container} key={elem.id}>
                         <View style={styles.profileContainer}>
                             <Avatar name="user" size={35} />
-                            <Text style={tw('pt-1.5 pl-2')}>
+                            <Text style={tw('my-auto pl-2')}>
                                 {elem.username}
                             </Text>
                             <Dots
                                 name="dots-three-horizontal"
                                 size={20}
-                                style={tw('pt-1 ml-auto')}
+                                style={tw('my-auto ml-auto')}
                             />
                         </View>
                         <Image
@@ -30,7 +30,7 @@ const Cards = () => {
                             alt="posts"
                             style={styles.postsImage}
                         />
-                        <View style={styles.likesContainer}>
+                        <View style={styles.postInfo}>
                             <Pressable
                                 onPress={() => {
                                     setLikePost(!likePost);
@@ -56,16 +56,24 @@ const Cards = () => {
                                     source={require('../../assets/PostIcons/shareIcon.png')}
                                 />
                             </Pressable>
+                            <Pressable style={tw('ml-auto')}>
+                                <Image
+                                    source={require('../../assets/PostIcons/savePostIcon.png')}
+                                />
+                            </Pressable>
                         </View>
                         <Text style={tw('font-bold pt-3')}>100 Likes</Text>
                         {elem.comments.map((items) => {
                             return (
-                                <View style={styles.showingComments}>
+                                <View
+                                    style={styles.showingComments}
+                                    key={items.id}
+                                >
                                     <Text style={tw('font-bold pt-3')}>
                                         {items.username}:
                                     </Text>
                                     <Text style={tw('font-normal pt-3 pl-1')}>
-                                        {items.comment}:
+                                        {items.comment}
                                     </Text>
                                 </View>
                             );
@@ -90,7 +98,7 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         width: '100%',
     },
-    likesContainer: {
+    postInfo: {
         flexDirection: 'row',
     },
     showingComments: {
