@@ -28,12 +28,6 @@ const SearchScreen = () => {
             >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={tw('p-2.5')}>
-                        <SeachIcon
-                            name="search1"
-                            size={20}
-                            style={tw('absolute top-[40%] left-[8%]')}
-                            color={'#979797'}
-                        />
                         <TextInput
                             style={styles.input}
                             onChangeText={setSearch}
@@ -89,11 +83,11 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#6262821F',
         borderRadius: 10,
-        paddingLeft: 35,
     },
     searchContainer: {
         flexDirection: 'row',
         paddingVertical: 10,
+        paddingHorizontal: 10,
     },
     searchUserImage: {
         height: 40,
