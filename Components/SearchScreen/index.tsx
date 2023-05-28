@@ -13,8 +13,8 @@ import {
 } from "react-native";
 import React from "react";
 import { useTailwind } from "tailwind-rn/dist";
-import { SearchUserData } from "../../Config/searchUsers";
-import UseDebounce from "../../Hooks/useDebounce";
+import { SearchUserData } from "../../config/searchUsers";
+import UseDebounce from "../../hooks/useDebounce";
 const SearchScreen = () => {
   const tw = useTailwind();
   const [search, setSearch] = React.useState("");

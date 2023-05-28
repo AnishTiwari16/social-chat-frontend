@@ -1,6 +1,6 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { data } from "../../Config/randomPosts";
+import { data } from "../../config/randomPosts";
 import { useTailwind } from "tailwind-rn/dist";
 import Avatar from "react-native-vector-icons/EvilIcons";
 import Dots from "react-native-vector-icons/Entypo";

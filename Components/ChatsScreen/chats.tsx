@@ -13,8 +13,8 @@ import {
 } from "react-native";
 import React from "react";
 import { useTailwind } from "tailwind-rn/dist";
-import { chats } from "../../Config/randomChats";
-import UseDebounce from "../../Hooks/useDebounce";
+import { chats } from "../../config/randomChats";
+import UseDebounce from "../../hooks/useDebounce";
 const Chats = () => {
   const tw = useTailwind();
   const [searchChats, setSearchChats] = React.useState("");
