@@ -14,14 +14,12 @@ import {
 import React from "react";
 import { useTailwind } from "tailwind-rn/dist";
 import { SearchUserData } from "../../config/searchUsers";
-import SeachIcon from "react-native-vector-icons/AntDesign";
 import UseDebounce from "../../hooks/useDebounce";
 const SearchScreen = () => {
   const tw = useTailwind();
   const [search, setSearch] = React.useState("");
   //debonuced searches
   const debouncedUserSearch = UseDebounce(search, 1000);
-  console.log("huskyTesting");
   return (
     <SafeAreaView>
       <KeyboardAvoidingView
