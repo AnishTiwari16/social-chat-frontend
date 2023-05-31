@@ -44,38 +44,38 @@ const ProfileScreen = ({ navigation }) => {
                   navigation.navigate("EditProfileScreen");
               }}
             >
-              <Text style={tw("pr-2")}>Settings</Text>
+              <Text style={tw("pr-3")}>Settings</Text>
               <Image
                 source={require("../../assets/PostIcons/settingsIcon.png")}
                 alt="settingsIcon"
               />
             </TouchableOpacity>
-            <View
+            <TouchableOpacity
               style={{
                 flexDirection: "row",
                 paddingTop: 30,
                 paddingHorizontal: 20,
               }}
             >
-              <Text style={tw("pr-2")}>Saved</Text>
+              <Text style={tw("pr-3")}>Saved</Text>
               <Image
-                source={require("../../assets/PostIcons/settingsIcon.png")}
-                alt="settingsIcon"
+                source={require("../../assets/PostIcons/savedIcon.png")}
+                alt="savedIcon"
               />
-            </View>
-            <View
+            </TouchableOpacity>
+            <TouchableOpacity
               style={{
                 flexDirection: "row",
                 paddingTop: 30,
                 paddingHorizontal: 20,
               }}
             >
-              <Text style={tw("pr-2")}>Favourites</Text>
+              <Text style={tw("pr-3")}>Favourites</Text>
               <Image
-                source={require("../../assets/PostIcons/settingsIcon.png")}
-                alt="settingsIcon"
+                source={require("../../assets/PostIcons/nameTagIcon.png")}
+                alt="nameTagIcon"
               />
-            </View>
+            </TouchableOpacity>
           </View>
         </Modal>
         <View style={tw("pt-5")}>

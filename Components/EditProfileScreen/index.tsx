@@ -16,11 +16,11 @@ const EditProfileScreen = () => {
             alt="UserProfile"
             style={styles.userProfile}
           />
-          <Text style={tw("pt-5 text-blue-500 font-semibold")}>
+          <Text style={tw("py-5 text-blue-500 font-semibold")}>
             Change profile photo
           </Text>
         </View>
-        <View style={tw("py-5")}>
+        <View style={tw("py-5 border-t-2 border-t-slate-200")}>
           <Text>Name</Text>
         </View>
         <View style={tw("py-5")}>
@@ -31,6 +31,23 @@ const EditProfileScreen = () => {
         </View>
         <View style={tw("py-5")}>
           <Text>Bio</Text>
+        </View>
+        <View style={tw("py-5 border-t-2 border-t-slate-200")}>
+          <Text style={tw("text-blue-500 font-normal")}>
+            Switch to professional account
+          </Text>
+        </View>
+        <View style={tw("py-3")}>
+          <Text style={tw("font-semibold")}>Private Information</Text>
+        </View>
+        <View style={tw("py-5")}>
+          <Text>Email</Text>
+        </View>
+        <View style={tw("py-5")}>
+          <Text>Phone</Text>
+        </View>
+        <View style={tw("py-5")}>
+          <Text>Gender</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -46,6 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   centerDiv: {
-    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
