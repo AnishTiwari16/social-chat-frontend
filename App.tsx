@@ -15,6 +15,7 @@ import VerifyChoosePassword from "./Screens/onBoarding/logIn/ForgetPassword/veri
 import VerifyAccountRecovered from "./Screens/onBoarding/logIn/ForgetPassword/verifyAccountRecovered";
 import MainScreen from "./Screens/HomeScreen";
 import Chats from "./Components/ChatsScreen/chats";
+import EditProfileScreen from "./Components/EditProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,18 @@ export default function App() {
               headerTitleStyle: {
                 fontWeight: "bold",
               },
+            }}
+          />
+          <Stack.Screen
+            name="EditProfileScreen"
+            component={EditProfileScreen}
+            options={{
+              headerShown: true,
+              title: "Edit profile",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+              animation: "slide_from_bottom",
             }}
           />
         </Stack.Navigator>

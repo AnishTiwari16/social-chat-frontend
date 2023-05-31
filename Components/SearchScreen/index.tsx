@@ -21,7 +21,7 @@ const SearchScreen = () => {
   //debonuced searches
   const debouncedUserSearch = UseDebounce(search, 1000);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw("bg-white h-full")}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >

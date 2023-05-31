@@ -1,17 +1,83 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { useTailwind } from "tailwind-rn/dist";
 import Menu from "react-native-vector-icons/Entypo";
 import { profileData } from "../../config/profileData";
-const ProfileScreen = () => {
+import Modal from "react-native-modal";
+const ProfileScreen = ({ navigation }) => {
   const tw = useTailwind();
+  const [isModalVisible, setModalVisible] = React.useState(false);
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw("bg-white h-full")}>
       <View style={tw("p-2.5")}>
         <View style={styles.profileContainer}>
           <Text style={tw("font-bold")}>Username</Text>
-          <Menu name="menu" size={25} />
+          <TouchableOpacity onPress={() => setModalVisible(!isModalVisible)}>
+            <Menu name="menu" size={25} />
+          </TouchableOpacity>
         </View>
+        <Modal
+          isVisible={isModalVisible}
+          style={tw("w-full ml-0 mb-0")}
+          onBackdropPress={() => setModalVisible(!isModalVisible)}
+        >
+          <View
+            style={tw("bg-white absolute bottom-0 w-full h-1/4 rounded-t-lg")}
+          >
+            <TouchableOpacity
+              style={{
+                flexDirection: "row",
+                paddingTop: 30,
+                paddingHorizontal: 20,
+              }}
+              onPress={() => {
+                setModalVisible(!isModalVisible),
+                  navigation.navigate("EditProfileScreen");
+              }}
+            >
+              <Text style={tw("pr-2")}>Settings</Text>
+              <Image
+                source={require("../../assets/PostIcons/settingsIcon.png")}
+                alt="settingsIcon"
+              />
+            </TouchableOpacity>
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 30,
+                paddingHorizontal: 20,
+              }}
+            >
+              <Text style={tw("pr-2")}>Saved</Text>
+              <Image
+                source={require("../../assets/PostIcons/settingsIcon.png")}
+                alt="settingsIcon"
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 30,
+                paddingHorizontal: 20,
+              }}
+            >
+              <Text style={tw("pr-2")}>Favourites</Text>
+              <Image
+                source={require("../../assets/PostIcons/settingsIcon.png")}
+                alt="settingsIcon"
+              />
+            </View>
+          </View>
+        </Modal>
         <View style={tw("pt-5")}>
           <View style={styles.userFollwing}>
             <Image
