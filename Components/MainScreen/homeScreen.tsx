@@ -7,8 +7,8 @@ import { useTailwind } from "tailwind-rn/dist";
 const HomeScreen = ({ navigation }) => {
   const tw = useTailwind();
   return (
-    <SafeAreaView>
-      <View style={tw("p-2.5 bg-white")}>
+    <SafeAreaView style={tw("bg-white")}>
+      <View style={tw("p-2.5 ")}>
         <Navbar navigation={navigation} />
         <Cards />
       </View>
