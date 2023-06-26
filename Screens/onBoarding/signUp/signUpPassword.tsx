@@ -12,18 +12,29 @@ import {
 import React from "react";
 import { useTailwind } from "tailwind-rn";
 import Security from "react-native-vector-icons/MaterialCommunityIcons";
+import EyeOpen from "react-native-vector-icons/Entypo";
+import EyeClose from "react-native-vector-icons/Entypo";
 const SignUpPassword = ({ navigation, route }) => {
   const tw = useTailwind();
   const { email, username } = route.params;
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [passwordValidation, setPasswordValidation] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setConfirmShowPassword] = React.useState(false);
+  const [strongPassword, setStrongPassword] = React.useState("");
+  const strongPasswordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const handlePassword = () => {
     if (!password || !confirmPassword) {
       setPasswordValidation("Please enter a password");
     } else if (password != confirmPassword) {
       setPasswordValidation("Password do not match");
+    } else if (!strongPasswordRegex.test(password)) {
+      setStrongPassword(
+        "Password should contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
+      );
     } else {
       navigation.navigate("SignUpAccountCreated", {
         email: email,
@@ -59,22 +70,63 @@ const SignUpPassword = ({ navigation, route }) => {
               <Text style={tw("text-center text-blue-500")}>
                 Choose a strong password
               </Text>
+              <View>
+                <TextInput
+                  style={tw("h-12 border-2 border-neutral-300 p-2.5 my-5")}
+                  secureTextEntry={showPassword ? false : true}
+                  placeholder="Enter password"
+                  onChangeText={(e) => setPassword(e)}
+                  value={password}
+                />
+                {!showPassword ? (
+                  <EyeOpen
+                    name="eye-with-line"
+                    size={25}
+                    color="#9b9b9b"
+                    style={tw("absolute top-8 right-2")}
+                    onPress={() => setShowPassword(!showPassword)}
+                  />
+                ) : (
+                  <EyeClose
+                    name="eye"
+                    size={25}
+                    color="#9b9b9b"
+                    style={tw("absolute top-8 right-2")}
+                    onPress={() => setShowPassword(!showPassword)}
+                  />
+                )}
+              </View>
 
-              <TextInput
-                style={tw("h-12 border-2 border-neutral-300 p-2.5 my-5")}
-                secureTextEntry={true}
-                placeholder="Enter password"
-                onChangeText={(e) => setPassword(e)}
-                value={password}
-              />
               <View style={tw("mb-3")}>
                 <TextInput
                   style={tw("h-12 border-2 border-neutral-300 p-2.5 mb-5")}
-                  secureTextEntry={true}
                   placeholder="Confirm password"
                   onChangeText={(e) => setConfirmPassword(e)}
                   value={confirmPassword}
+                  secureTextEntry={showConfirmPassword ? false : true}
                 />
+                {!showConfirmPassword ? (
+                  <EyeOpen
+                    name="eye-with-line"
+                    size={25}
+                    color="#9b9b9b"
+                    style={tw("absolute top-3 right-2")}
+                    onPress={() => setConfirmShowPassword(!showConfirmPassword)}
+                  />
+                ) : (
+                  <EyeClose
+                    name="eye"
+                    size={25}
+                    color="#9b9b9b"
+                    style={tw("absolute top-3 right-2")}
+                    onPress={() => setConfirmShowPassword(!showConfirmPassword)}
+                  />
+                )}
+                {strongPassword.length > 0 && (
+                  <Text style={tw("text-red-500 text-sm")}>
+                    {strongPassword}
+                  </Text>
+                )}
                 <Text style={tw("text-red-500 text-sm")}>
                   {passwordValidation}
                 </Text>

@@ -21,12 +21,14 @@ const VerificationSetup = ({ navigation, route }) => {
   const { email, verification_code } = route.params;
   const [verifyCode, setVerifyCode] = React.useState("");
   const [verifyStatus, setVerifyStatus] = React.useState("");
+  const [otpResponse, setOtpResponse] = React.useState("");
   const countdown = useOtpCounter(30);
   const handleVerify = () => {
     if (!verifyCode) {
       setVerifyStatus("Please enter verification code");
     } else if (verification_code != verifyCode) {
       setVerifyStatus("Verification code is incorrect");
+      setOtpResponse("");
     } else {
       navigation.navigate("SignUpUsername", { email });
     }
@@ -38,12 +40,12 @@ const VerificationSetup = ({ navigation, route }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, screen: "verifyOtp" }),
       });
       const result = resp.json();
       result.then(async (res) => {
         if (!res.error) {
-          Alert.alert("Otp send successfully");
+          setOtpResponse("Otp send successfully");
         }
       });
     } catch (err) {
@@ -97,9 +99,15 @@ const VerificationSetup = ({ navigation, route }) => {
                     </Text>
                   )}
                 </View>
-                <Text style={tw("text-red-500 text-sm pt-3")}>
-                  {verifyStatus}
-                </Text>
+                {verifyStatus.length > 0 ? (
+                  <Text style={tw("text-red-500 text-sm pt-3")}>
+                    {verifyStatus}
+                  </Text>
+                ) : (
+                  <Text style={tw("text-green-500 text-sm pt-3")}>
+                    {otpResponse}
+                  </Text>
+                )}
               </View>
               <View style={tw("bg-blue-500 p-1 rounded")}>
                 <Button
